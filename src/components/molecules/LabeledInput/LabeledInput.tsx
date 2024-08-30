@@ -1,12 +1,6 @@
 import { Input, Label } from "../../atoms/indexAtoms";
-import { InputProps, LabelProps } from "../../atoms/interfacesAtoms";
+import { LabeledInputProps } from "../interfacesMolecules";
 import './LabeledInput.css';
-
-interface LabeledInputProps extends InputProps, Omit<LabelProps, 'text'> {
-    label: string;
-    inputClassName?: string;
-    labelClassName?: string;
-}
 
 export const LabeledInput: React.FC<LabeledInputProps> = ({
     label,
