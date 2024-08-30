@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaUser, FaLock } from 'react-icons/fa';
 import { Button } from "../atoms/indexAtoms";
-import { LabeledInput } from "../molecules/LabelAndInput/LabeledInput";
+import { LabeledInput } from "../molecules/LabeledInput/LabeledInput";
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
