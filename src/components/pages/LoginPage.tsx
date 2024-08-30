@@ -1,41 +1,58 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
-import { Button } from "../atoms/indexAtoms";
-import { LabeledInput } from "../molecules/indexMolecules";
+import { Form } from '../organisms/indexOrganisms';
+import { FormProps } from '../organisms/interfacesOrganisms';
+import './LoginPage.css';
 
-const LoginPage = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+const LoginPage: React.FC = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const validateUsername = (value: string) => {
-        return value.length >= 10 && value.length <= 12;
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log('Email:', email);
+        console.log('Password:', password);
+    };
+
+    const formProps: FormProps = {
+        inputs: [
+            {
+                label: 'Email',
+                type: 'email',
+                value: email,
+                onChange: (e) => setEmail(e.target.value),
+                placeholder: 'Enter your email',
+                ariaLabel: 'Email input',
+                inputClassName: 'input-email',
+                labelClassName: 'label-email',
+                icon: <FaUser />,
+            },
+            {
+                label: 'Password',
+                type: 'password',
+                value: password,
+                onChange: (e) => setPassword(e.target.value),
+                placeholder: 'Enter your password',
+                ariaLabel: 'Password input',
+                inputClassName: 'input-password',
+                labelClassName: 'label-password',
+                icon: <FaLock />,
+                showPasswordToggle: true,
+            },
+        ],
+        button: {
+            type: 'submit',
+            children: 'Login',
+            className: 'login-button',
+        },
+        formClassName: 'login-form',
+        onSubmit: handleSubmit,
     };
 
     return (
-        <div>
-            <h1>Login Page</h1>
-            <LabeledInput
-                label="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your username"
-                ariaLabel="Username"
-                icon={<FaUser />}
-                validate={validateUsername}
-            />
-            <LabeledInput
-                label="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                ariaLabel="Password"
-                icon={<FaLock />}
-                showPasswordToggle
-            />
-            <Button type="submit" disabled={!username || !password} ariaLabel="Sign In">
-                Sign In
-            </Button>
+        <div className="login-page">
+            <h1>Login</h1>
+            <Form {...formProps} />
         </div>
     );
 };
