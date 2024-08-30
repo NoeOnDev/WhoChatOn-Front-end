@@ -28,6 +28,10 @@ const LoginPage: React.FC = () => {
     };
 
     const formProps: FormProps = {
+        title: {
+            text: 'Login',
+            className: 'login-title',
+        },
         inputs: [
             {
                 label: 'Email or Username',
