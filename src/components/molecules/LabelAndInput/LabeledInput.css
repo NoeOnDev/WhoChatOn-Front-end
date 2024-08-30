@@ -1,0 +1,9 @@
+.labeled-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.labeled-input .default-label {
+    margin-bottom: 5px;
+}
