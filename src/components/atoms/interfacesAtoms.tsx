@@ -26,3 +26,13 @@ export interface LabelProps {
     text: string;
     className?: string;
 }
+
+export interface TitleProps {
+    text: string;
+    className?: string;
+}
+
+export interface SubtitleProps {
+    text: string;
+    className?: string;
+}
