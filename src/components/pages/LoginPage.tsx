@@ -69,8 +69,15 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="login-page">
-            {error && <p className="error-message">{error}</p>}
-            <Form {...formProps} />
+            <div className="login-container">
+                <div className="login-image-container">
+                    
+                </div>
+                <div className="login-form-container">
+                    {error && <p className="error-message">{error}</p>}
+                    <Form {...formProps} />
+                </div>
+            </div>
         </div>
     );
 };
