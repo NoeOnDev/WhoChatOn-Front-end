@@ -14,7 +14,8 @@ export const Input: React.FC<InputProps> = ({
     ariaLabel = '',
     icon,
     showPasswordToggle = false,
-    validate
+    validate,
+    ...props
 }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [isValid, setIsValid] = useState<boolean | null>(null);
@@ -59,6 +60,7 @@ export const Input: React.FC<InputProps> = ({
                 className="default-input"
                 placeholder={placeholder}
                 aria-label={ariaLabel || placeholder}
+                {...props}
             />
             {showPasswordToggle && value && (
                 <button

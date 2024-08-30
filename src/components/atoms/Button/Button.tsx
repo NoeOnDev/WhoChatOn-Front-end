@@ -8,7 +8,8 @@ export const Button: React.FC<ButtonProps> = ({
     disabled = false,
     children,
     ariaLabel,
-    icon
+    icon,
+    ...props
 }) => {
     return (
         <button
@@ -17,6 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
             className={`button ${className}`}
             disabled={disabled}
             aria-label={ariaLabel}
+            {...props}
         >
             {icon && <span className="button-icon">{icon}</span>}
             {children}
