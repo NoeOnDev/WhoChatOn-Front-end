@@ -1,20 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { InputProps } from '../interfacesAtoms';
 import './Input.css';
-
-interface InputProps {
-    type?: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onFocus?: () => void;
-    onBlur?: () => void;
-    className?: string;
-    placeholder?: string;
-    ariaLabel?: string;
-    icon?: React.ReactNode;
-    showPasswordToggle?: boolean;
-    validate?: (value: string) => boolean;
-}
 
 export const Input: React.FC<InputProps> = ({
     type = 'text',
