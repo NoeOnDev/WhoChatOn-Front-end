@@ -3,3 +3,4 @@ export { Label } from './Label/Label';
 export { Button } from './Button/Button';
 export { Title } from './Title/Title';
 export { Subtitle } from './Subtitle/Subtitle';
+export { Paragraph } from './Paragraph/Paragraph';

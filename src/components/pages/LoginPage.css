@@ -22,6 +22,24 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
+    text-align: center;
+}
+
+.login-image-title {
+    color: #ffffff;
+}
+
+.login-image {
+    transform: scaleX(1);
+    width: 70%;
+}
+
+.login-image-subtitle {
+    color: #ffffff;
+}
+
+.login-image-paragraph {
+    color: #ffffff;
 }
 
 .login-form-container {
@@ -33,11 +51,14 @@
     justify-content: center;
 }
 
-.login-image {
-    transform: scaleX(-1);
-    width: 80%;
+.login-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-image-title {
-    color: #ffffff;
+.login-button {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
 }
