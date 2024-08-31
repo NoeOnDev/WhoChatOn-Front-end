@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: Arial, sans-serif;
 }
 
 .login-container {
@@ -21,6 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px;
 }
 
 .login-form-container {
@@ -31,3 +31,8 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.login-image {
+    transform: scaleX(-1);
+}
+

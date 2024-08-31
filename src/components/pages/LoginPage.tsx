@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { Form } from '../organisms/indexOrganisms';
 import { FormProps } from '../organisms/interfacesOrganisms';
+import WhoChatOnSvg from '../../assets/chatOn.svg';
 import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
 
     const validateUsernameOrEmail = (value: string): boolean => {
         const usernameRegex = /^[a-zA-Z0-9]{8,12}$/;
@@ -18,11 +18,7 @@ const LoginPage: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!validateUsernameOrEmail(identifier)) {
-            setError('Please enter a valid username (8-12 alphanumeric characters) or email.');
-            return;
-        }
-        setError('');
+
         console.log('Identifier:', identifier);
         console.log('Password:', password);
     };
@@ -71,10 +67,9 @@ const LoginPage: React.FC = () => {
         <div className="login-page">
             <div className="login-container">
                 <div className="login-image-container">
-                    
+                    <img src={WhoChatOnSvg} alt="WhoChatOn" className="login-image" />
                 </div>
                 <div className="login-form-container">
-                    {error && <p className="error-message">{error}</p>}
                     <Form {...formProps} />
                 </div>
             </div>
