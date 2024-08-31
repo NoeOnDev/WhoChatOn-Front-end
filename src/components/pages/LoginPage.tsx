@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
+import { Title } from '../atoms/indexAtoms';
 import { Form } from '../organisms/indexOrganisms';
 import { FormProps } from '../organisms/interfacesOrganisms';
 import WhoChatOnSvg from '../../assets/chatOn.svg';
@@ -68,6 +69,7 @@ const LoginPage: React.FC = () => {
             <div className="login-container">
                 <div className="login-image-container">
                     <img src={WhoChatOnSvg} alt="WhoChatOn" className="login-image" />
+                    <Title text="WhoChatOn" className="login-image-title" />
                 </div>
                 <div className="login-form-container">
                     <Form {...formProps} />

@@ -18,6 +18,7 @@
     flex: 1;
     background-color: #007bff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 40px;
@@ -36,3 +37,6 @@
     transform: scaleX(-1);
 }
 
+.login-image-title {
+    color: #ffffff;
+}
