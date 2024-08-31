@@ -35,6 +35,7 @@
 
 .login-image {
     transform: scaleX(-1);
+    width: 80%;
 }
 
 .login-image-title {

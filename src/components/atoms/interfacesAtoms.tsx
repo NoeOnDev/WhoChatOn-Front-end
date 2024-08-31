@@ -36,3 +36,8 @@ export interface SubtitleProps {
     text: string;
     className?: string;
 }
+
+export interface ParagraphProps {
+    text: string;
+    className?: string;
+}
