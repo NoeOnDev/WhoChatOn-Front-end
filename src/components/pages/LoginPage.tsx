@@ -106,7 +106,7 @@ const LoginPage: React.FC = () => {
             <div className="login-container">
                 <div className={`login-image-container ${isLogin ? '' : 'move-right'}`}>
                     <Title text="WhoChatOn" className="login-image-title" />
-                    <img src={WhoChatOnSvg} alt="WhoChatOn" className="login-image" />
+                    <img src={WhoChatOnSvg} alt="WhoChatOn" className={`login-image ${isLogin ? '' : 'flipped'}`} />
                     <Subtitle text="Connect with your friends and family" className='login-image-subtitle' />
                     <Paragraph text="" className='login-image-paragraph' />
                 </div>

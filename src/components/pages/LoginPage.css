@@ -7,15 +7,15 @@
 
 .login-container {
     display: flex;
-    width: 800px;
-    height: 500px;
+    height: 550px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
     position: relative;
 }
 
-.login-image-container, .login-form-container {
+.login-image-container,
+.login-form-container {
     flex: 1;
     transition: transform 0.5s ease-in-out;
 }
@@ -27,7 +27,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -40,18 +40,23 @@
 }
 
 .login-image {
-    transform: scaleX(1);
     width: 70%;
+    transition: transform 0.5s ease-in-out;
 }
 
-.login-image-subtitle, .login-image-paragraph {
+.login-image.flipped {
+    transform: scaleX(-1);
+}
+
+.login-image-subtitle,
+.login-image-paragraph {
     color: #ffffff;
 }
 
 .login-form-container {
     flex: 1;
     background-color: #ffffff;
-    padding: 40px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,5 +83,4 @@
 .login-button {
     display: flex;
     justify-content: center;
-    margin: 0 10px;
 }
