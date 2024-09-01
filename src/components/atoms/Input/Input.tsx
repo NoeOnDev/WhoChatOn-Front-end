@@ -73,13 +73,13 @@ export const Input: React.FC<InputProps> = ({
                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </button>
                 )}
-                {errorMessage && (
-                    <span className="input-error-icon">
-                        <FaExclamationCircle />
-                    </span>
-                )}
             </div>
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            {errorMessage && (
+                <div className="error-message">
+                    <FaExclamationCircle className="error-icon" />
+                    {errorMessage}
+                </div>
+            )}
         </>
     );
 };

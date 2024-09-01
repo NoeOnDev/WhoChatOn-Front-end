@@ -27,6 +27,7 @@
 .default-input {
     width: 100%;
     padding: 10px 10px 10px 35px;
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -66,17 +67,15 @@
     color: #aaa;
 }
 
-.input-error-icon {
-    position: absolute;
-    right: 10px;
-    color: #fd3d3d;
+.error-message {
     display: flex;
     align-items: center;
-}
-
-.error-message {
     color: #fd3d3d;
     font-size: 12px;
     margin-top: 3px;
     margin-bottom: -10px;
+}
+
+.error-icon {
+    margin-right: 5px;
 }
