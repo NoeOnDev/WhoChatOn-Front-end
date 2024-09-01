@@ -69,7 +69,7 @@ const LoginPage: React.FC = () => {
                         }
                         break;
                     case 'password':
-                        if (!validatePassword(value)) {
+                        if (!isLogin && !validatePassword(value)) {
                             newErrors.password = 'Password must be at least 8 characters';
                         }
                         break;
@@ -124,7 +124,7 @@ const LoginPage: React.FC = () => {
 
         if (!password) {
             newErrors.password = 'Please enter your password';
-        } else if (!validatePassword(password)) {
+        } else if (!isLogin && !validatePassword(password)) {
             newErrors.password = 'Password must be at least 8 characters';
         }
 
