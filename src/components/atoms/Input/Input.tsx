@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaExclamationCircle } from 'react-icons/fa';
 import { InputProps } from '../interfacesAtoms';
 import './Input.css';
 
@@ -15,6 +15,7 @@ export const Input: React.FC<InputProps> = ({
     icon,
     showPasswordToggle = false,
     validate,
+    errorMessage,
     ...props
 }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -45,32 +46,40 @@ export const Input: React.FC<InputProps> = ({
     };
 
     return (
-        <div className={`input-wrapper ${className}`}>
-            {icon && (
-                <span className={`input-icon ${getIconClassName()}`}>
-                    {icon}
-                </span>
-            )}
-            <input
-                type={showPasswordToggle && showPassword ? 'text' : type}
-                value={value}
-                onChange={handleChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                className="default-input"
-                placeholder={placeholder}
-                aria-label={ariaLabel || placeholder}
-                {...props}
-            />
-            {showPasswordToggle && value && (
-                <button
-                    type="button"
-                    className="toggle-password"
-                    onClick={handleTogglePassword}
-                >
-                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
-            )}
-        </div>
+        <>
+            <div className={`input-wrapper ${className}`}>
+                {icon && (
+                    <span className={`input-icon ${getIconClassName()}`}>
+                        {icon}
+                    </span>
+                )}
+                <input
+                    type={showPasswordToggle && showPassword ? 'text' : type}
+                    value={value}
+                    onChange={handleChange}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    className={`default-input ${errorMessage ? 'input-error' : ''}`}
+                    placeholder={placeholder}
+                    aria-label={ariaLabel || placeholder}
+                    {...props}
+                />
+                {showPasswordToggle && value && (
+                    <button
+                        type="button"
+                        className="toggle-password"
+                        onClick={handleTogglePassword}
+                    >
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
+                )}
+                {errorMessage && (
+                    <span className="input-error-icon">
+                        <FaExclamationCircle />
+                    </span>
+                )}
+            </div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
+        </>
     );
 };

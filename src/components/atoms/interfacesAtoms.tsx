@@ -20,6 +20,7 @@ export interface InputProps {
     icon?: React.ReactNode;
     showPasswordToggle?: boolean;
     validate?: (value: string) => boolean;
+    errorMessage?: string;
 }
 
 export interface LabelProps {
