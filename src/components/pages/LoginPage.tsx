@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaKey } from 'react-icons/fa';
-import { Title, Subtitle, Paragraph } from '../atoms/indexAtoms';
+import { Title, Subtitle, Paragraph, Button } from '../atoms/indexAtoms';
 import { Form } from '../organisms/indexOrganisms';
 import { FormProps } from '../organisms/interfacesOrganisms';
 import WhoChatOnSvg from '../../assets/chatOn.svg';
@@ -234,9 +234,9 @@ const LoginPage: React.FC = () => {
                 </div>
                 <div className={`login-form-container ${isLogin ? '' : 'move-left'}`}>
                     <Form {...formProps} />
-                    <button onClick={() => setIsLogin(!isLogin)} className="switch-button">
+                    <Button onClick={() => setIsLogin(!isLogin)} className="switch-button">
                         {isLogin ? 'Create Account' : 'Login'}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>
