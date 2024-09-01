@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaKey } from 'react-icons/fa';
 import { Title, Subtitle, Paragraph } from '../atoms/indexAtoms';
 import { Form } from '../organisms/indexOrganisms';
@@ -10,6 +10,15 @@ const LoginPage: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
+    const [delayedIsLogin, setDelayedIsLogin] = useState(isLogin);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDelayedIsLogin(isLogin);
+        }, 200);
+
+        return () => clearTimeout(timer);
+    }, [isLogin]);
 
     const validateUsernameOrEmail = (value: string): boolean => {
         const usernameRegex = /^[a-zA-Z0-9]{8,12}$/;
@@ -26,10 +35,10 @@ const LoginPage: React.FC = () => {
 
     const formProps: FormProps = {
         title: {
-            text: isLogin ? 'Login' : 'Create Account',
+            text: delayedIsLogin ? 'Login' : 'Create Account',
             className: 'login-title',
         },
-        inputs: isLogin
+        inputs: delayedIsLogin
             ? [
                 {
                     label: 'Email or Username',
@@ -94,7 +103,7 @@ const LoginPage: React.FC = () => {
             ],
         button: {
             type: 'submit',
-            children: isLogin ? 'Login' : 'Create Account',
+            children: delayedIsLogin ? 'Login' : 'Create Account',
             className: 'login-button',
         },
         formClassName: 'login-form',
