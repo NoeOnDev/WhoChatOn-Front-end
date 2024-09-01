@@ -23,13 +23,6 @@ const LoginPage: React.FC = () => {
         return () => clearTimeout(timer);
     }, [isLogin]);
 
-    const validateUsernameOrEmail = (value: string): boolean => {
-        const usernameRegex = /^[a-zA-Z0-9]{8,12}$/;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        return usernameRegex.test(value) || emailRegex.test(value);
-    };
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (isLogin) {
@@ -58,7 +51,6 @@ const LoginPage: React.FC = () => {
                     inputClassName: 'input-identifier',
                     labelClassName: 'label-identifier',
                     icon: <FaUser />,
-                    validate: validateUsernameOrEmail,
                 },
                 {
                     label: 'Password',
