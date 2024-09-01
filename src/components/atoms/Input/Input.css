@@ -17,11 +17,11 @@
 }
 
 .input-icon.valid {
-    color: green;
+    color: #13a713;
 }
 
 .input-icon.invalid {
-    color: red;
+    color: #fd3d3d;
 }
 
 .default-input {
