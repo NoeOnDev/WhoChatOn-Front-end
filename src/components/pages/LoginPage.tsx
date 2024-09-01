@@ -9,12 +9,15 @@ import './LoginPage.css';
 const LoginPage: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [identifier, setIdentifier] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [delayedIsLogin, setDelayedIsLogin] = useState(isLogin);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setDelayedIsLogin(isLogin);
+            setPassword('');
         }, 200);
 
         return () => clearTimeout(timer);
@@ -29,7 +32,12 @@ const LoginPage: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Identifier:', identifier);
+        if (isLogin) {
+            console.log('Identifier:', identifier);
+        } else {
+            console.log('Username:', username);
+            console.log('Email:', email);
+        }
         console.log('Password:', password);
     };
 
@@ -69,8 +77,8 @@ const LoginPage: React.FC = () => {
                 {
                     label: 'Email',
                     type: 'email',
-                    value: identifier,
-                    onChange: (e) => setIdentifier(e.target.value),
+                    value: email,
+                    onChange: (e) => setEmail(e.target.value),
                     placeholder: 'Enter your email',
                     ariaLabel: 'Email input',
                     inputClassName: 'input-email',
@@ -80,8 +88,8 @@ const LoginPage: React.FC = () => {
                 {
                     label: 'Username',
                     type: 'text',
-                    value: identifier,
-                    onChange: (e) => setIdentifier(e.target.value),
+                    value: username,
+                    onChange: (e) => setUsername(e.target.value),
                     placeholder: 'Choose a username',
                     ariaLabel: 'Username input',
                     inputClassName: 'input-username',
