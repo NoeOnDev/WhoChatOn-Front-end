@@ -6,6 +6,26 @@ import { FormProps } from '../organisms/interfacesOrganisms';
 import WhoChatOnSvg from '../../assets/chatOn.svg';
 import './LoginPage.css';
 
+const validateUsernameOrEmail = (value: string): boolean => {
+    const usernameRegex = /^[a-zA-Z0-9]{6,12}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return usernameRegex.test(value) || emailRegex.test(value);
+};
+
+const validateEmail = (value: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+};
+
+const validateUsername = (value: string): boolean => {
+    const usernameRegex = /^[a-zA-Z0-9]{6,12}$/;
+    return usernameRegex.test(value);
+};
+
+const validatePassword = (value: string): boolean => {
+    return value.length >= 8;
+};
+
 const LoginPage: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [identifier, setIdentifier] = useState('');
@@ -19,6 +39,7 @@ const LoginPage: React.FC = () => {
         const timer = setTimeout(() => {
             setDelayedIsLogin(isLogin);
             setPassword('');
+            setErrors({});
         }, 200);
 
         return () => clearTimeout(timer);
@@ -27,8 +48,34 @@ const LoginPage: React.FC = () => {
     const handleChange = (field: string, value: string) => {
         setErrors((prevErrors) => {
             const newErrors = { ...prevErrors };
-            if (value) {
+            if (!value) {
+                newErrors[field] = 'This field is required';
+            } else {
                 delete newErrors[field];
+                switch (field) {
+                    case 'identifier':
+                        if (!validateUsernameOrEmail(value)) {
+                            newErrors.identifier = 'Invalid username or email';
+                        }
+                        break;
+                    case 'email':
+                        if (!validateEmail(value)) {
+                            newErrors.email = 'Invalid email';
+                        }
+                        break;
+                    case 'username':
+                        if (!validateUsername(value)) {
+                            newErrors.username = 'Invalid username';
+                        }
+                        break;
+                    case 'password':
+                        if (!validatePassword(value)) {
+                            newErrors.password = 'Password must be at least 8 characters';
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             return newErrors;
         });
@@ -57,18 +104,28 @@ const LoginPage: React.FC = () => {
 
         if (!identifier) {
             newErrors.identifier = 'Please enter your email or username';
+        } else if (!validateUsernameOrEmail(identifier)) {
+            newErrors.identifier = 'Invalid username or email';
         }
 
-        if (!isLogin && !email) {
-            newErrors.email = 'Please enter your email';
-        }
+        if (!isLogin) {
+            if (!email) {
+                newErrors.email = 'Please enter your email';
+            } else if (!validateEmail(email)) {
+                newErrors.email = 'Invalid email';
+            }
 
-        if (!isLogin && !username) {
-            newErrors.username = 'Please enter your username';
+            if (!username) {
+                newErrors.username = 'Please enter your username';
+            } else if (!validateUsername(username)) {
+                newErrors.username = 'Invalid username';
+            }
         }
 
         if (!password) {
             newErrors.password = 'Please enter your password';
+        } else if (!validatePassword(password)) {
+            newErrors.password = 'Password must be at least 8 characters';
         }
 
         if (Object.keys(newErrors).length > 0) {
