@@ -68,13 +68,13 @@
 
 .switch-button {
     margin-top: 10px;
+    font-size: 14px;
+    font-weight: 700;
     background-color: transparent;
     border: none;
     color: #007bff;
     cursor: pointer;
     transition: background-color 0.2s;
-    font-size: 14px;
-    font-weight: 600;
 }
 
 .switch-button:hover {

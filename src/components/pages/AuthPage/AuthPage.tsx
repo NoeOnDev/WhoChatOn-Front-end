@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaKey } from 'react-icons/fa';
-import { Title, Subtitle, Paragraph, Button } from '../atoms/indexAtoms';
-import { Form } from '../organisms/indexOrganisms';
-import { FormProps } from '../organisms/interfacesOrganisms';
+import { Title, Subtitle, Button } from '../../atoms/indexAtoms';
+import { Form } from '../../organisms/indexOrganisms';
+import { FormProps } from '../../organisms/interfacesOrganisms';
 import WhoChatOnSvg from '../../assets/chatOn.svg';
 import './LoginPage.css';
 
@@ -26,7 +26,7 @@ const validatePassword = (value: string): boolean => {
     return value.length >= 8;
 };
 
-const LoginPage: React.FC = () => {
+export const AuthPage: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [identifier, setIdentifier] = useState('');
     const [username, setUsername] = useState('');
@@ -40,7 +40,7 @@ const LoginPage: React.FC = () => {
             setDelayedIsLogin(isLogin);
             setPassword('');
             setErrors({});
-        }, 200);
+        }, 260);
 
         return () => clearTimeout(timer);
     }, [isLogin]);
@@ -230,7 +230,6 @@ const LoginPage: React.FC = () => {
                     <Title text="WhoChatOn" className="login-image-title" />
                     <img src={WhoChatOnSvg} alt="WhoChatOn" className={`login-image ${isLogin ? '' : 'flipped'}`} />
                     <Subtitle text="Connect with your friends and family" className='login-image-subtitle' />
-                    <Paragraph text="" className='login-image-paragraph' />
                 </div>
                 <div className={`login-form-container ${isLogin ? '' : 'move-left'}`}>
                     <Form {...formProps} />
@@ -242,5 +241,3 @@ const LoginPage: React.FC = () => {
         </div>
     );
 };
-
-export default LoginPage;
