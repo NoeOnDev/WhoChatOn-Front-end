@@ -25,6 +25,7 @@ export const Input: React.FC<InputProps> = ({
     const [isValid, setIsValid] = useState<boolean | null>(null);
     const [hasInput, setHasInput] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState<'weak' | 'medium' | 'strong' | 'secure'>('weak');
+    const [passwordRequirements, setPasswordRequirements] = useState<{ label: string; met: boolean }[]>([]);
 
     useEffect(() => {
         if (validate && hasInput) {
@@ -36,7 +37,9 @@ export const Input: React.FC<InputProps> = ({
 
     useEffect(() => {
         if (showPasswordStrength && hasInput) {
-            setPasswordStrength(getPasswordStrength(value));
+            const { strength, requirements } = getPasswordStrength(value);
+            setPasswordStrength(strength);
+            setPasswordRequirements(requirements);
         }
     }, [value, showPasswordStrength, hasInput]);
 
@@ -91,7 +94,7 @@ export const Input: React.FC<InputProps> = ({
                 </div>
             )}
             {showPasswordStrength && hasInput && (
-                <PasswordStrengthBar strength={passwordStrength} />
+                <PasswordStrengthBar strength={passwordStrength} requirements={passwordRequirements} />
             )}
         </>
     );
