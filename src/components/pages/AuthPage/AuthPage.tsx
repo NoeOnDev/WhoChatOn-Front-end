@@ -236,7 +236,7 @@ export const AuthPage: React.FC = () => {
                     <Form {...formProps} />
                     <div className="switch-button-container">
                         <Button onClick={() => setIsLogin(!isLogin)} className="switch-button">
-                            {isLogin ? 'Create Account' : 'Login'}
+                            {delayedIsLogin ? 'Create Account' : 'Login'}
                         </Button>
                     </div>
                 </div>

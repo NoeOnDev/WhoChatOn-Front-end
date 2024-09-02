@@ -35,10 +35,10 @@ export const Input: React.FC<InputProps> = ({
     }, [value, validate, hasInput]);
 
     useEffect(() => {
-        if (showPasswordStrength) {
+        if (showPasswordStrength && hasInput) {
             setPasswordStrength(getPasswordStrength(value));
         }
-    }, [value, showPasswordStrength]);
+    }, [value, showPasswordStrength, hasInput]);
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -90,7 +90,7 @@ export const Input: React.FC<InputProps> = ({
                     {errorMessage}
                 </div>
             )}
-            {showPasswordStrength && (
+            {showPasswordStrength && hasInput && (
                 <PasswordStrengthBar strength={passwordStrength} />
             )}
         </>
