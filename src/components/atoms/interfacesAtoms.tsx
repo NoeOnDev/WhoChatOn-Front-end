@@ -21,6 +21,7 @@ export interface InputProps {
     showPasswordToggle?: boolean;
     validate?: (value: string) => boolean;
     errorMessage?: string;
+    showPasswordStrength?: boolean;
 }
 
 export interface LabelProps {

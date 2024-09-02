@@ -212,6 +212,7 @@ export const AuthPage: React.FC = () => {
                     icon: <FaKey />,
                     showPasswordToggle: true,
                     errorMessage: errors.password,
+                    showPasswordStrength: true,
                 },
             ],
         button: {

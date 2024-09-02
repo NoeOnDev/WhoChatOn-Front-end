@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash, FaExclamationCircle } from 'react-icons/fa';
 import { InputProps } from '../interfacesAtoms';
+import { PasswordStrengthBar } from './utils/PasswordStrengthBar';
+import { getPasswordStrength } from './utils/passwordStrength';
 import './Input.css';
 
 export const Input: React.FC<InputProps> = ({
@@ -16,11 +18,13 @@ export const Input: React.FC<InputProps> = ({
     showPasswordToggle = false,
     validate,
     errorMessage,
+    showPasswordStrength = false,
     ...props
 }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [isValid, setIsValid] = useState<boolean | null>(null);
     const [hasInput, setHasInput] = useState(false);
+    const [passwordStrength, setPasswordStrength] = useState<'weak' | 'medium' | 'strong' | 'secure'>('weak');
 
     useEffect(() => {
         if (validate && hasInput) {
@@ -29,6 +33,12 @@ export const Input: React.FC<InputProps> = ({
             setIsValid(null);
         }
     }, [value, validate, hasInput]);
+
+    useEffect(() => {
+        if (showPasswordStrength) {
+            setPasswordStrength(getPasswordStrength(value));
+        }
+    }, [value, showPasswordStrength]);
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -79,6 +89,9 @@ export const Input: React.FC<InputProps> = ({
                     <FaExclamationCircle className="error-icon" />
                     {errorMessage}
                 </div>
+            )}
+            {showPasswordStrength && (
+                <PasswordStrengthBar strength={passwordStrength} />
             )}
         </>
     );
