@@ -3,8 +3,8 @@ import { FaUser, FaLock, FaEnvelope, FaKey } from 'react-icons/fa';
 import { Title, Subtitle, Button } from '../../atoms/indexAtoms';
 import { Form } from '../../organisms/indexOrganisms';
 import { FormProps } from '../../organisms/interfacesOrganisms';
-import WhoChatOnSvg from '../../assets/chatOn.svg';
-import './LoginPage.css';
+import WhoChatOnSvg from '../../../assets/chatOn.svg';
+import './AuthPage.css';
 
 const validateUsernameOrEmail = (value: string): boolean => {
     const usernameRegex = /^[a-zA-Z0-9]{6,12}$/;
