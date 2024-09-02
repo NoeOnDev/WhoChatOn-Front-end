@@ -7,7 +7,7 @@
 
 .login-container {
     display: flex;
-    height: 550px;
+    height: 600px;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -66,19 +66,25 @@
     transform: translateX(-100%);
 }
 
+.switch-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+}
+
 .switch-button {
-    margin-top: 10px;
     font-size: 14px;
     font-weight: 700;
-    background-color: transparent;
     border: none;
     color: #007bff;
     cursor: pointer;
-    transition: background-color 0.2s;
+    background: none;
+    padding: 0;
+    transition: color 0.2s;
 }
 
 .switch-button:hover {
-    background-color: transparent;
+    background: none;
 }
 
 .login-title {

@@ -234,9 +234,11 @@ export const AuthPage: React.FC = () => {
                 </div>
                 <div className={`login-form-container ${isLogin ? '' : 'move-left'}`}>
                     <Form {...formProps} />
-                    <Button onClick={() => setIsLogin(!isLogin)} className="switch-button">
-                        {isLogin ? 'Create Account' : 'Login'}
-                    </Button>
+                    <div className="switch-button-container">
+                        <Button onClick={() => setIsLogin(!isLogin)} className="switch-button">
+                            {isLogin ? 'Create Account' : 'Login'}
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>
